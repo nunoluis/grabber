@@ -3,12 +3,12 @@
 ## grabs single images from Pylon cameras using the pypylon API fom Basler
 https://github.com/basler/pypylon
 
-### First check conda is installed and your path
+First check conda is installed and your path
 
 `$ conda -V`
 `conda 4.7`
 
-### create a Conda environment with Python 3.7 (to see available versions of Python type `conda search "^python$` and press Enter):
+create a Conda environment with Python 3.7 (to see available versions of Python type `conda search "^python$` and press Enter):
 
 `conda create -n <your environment name> python=3.7`
 
