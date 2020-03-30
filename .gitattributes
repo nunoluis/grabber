@@ -1,0 +1,2 @@
+#add java highlighting for imagej macros
+.ijm linguist-language=Java
