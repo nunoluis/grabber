@@ -1,5 +1,4 @@
-```javascript
-
+////
 inputDir = getDirectory("choose the input directory");
 listdir = getFileList( inputDir );
 for (i = 0; i < listdir.length; i++) {
@@ -27,4 +26,4 @@ for (i = 0; i < listdir.length; i++) {
 }
 
 
-```
+////
