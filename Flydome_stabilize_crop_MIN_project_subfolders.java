@@ -12,7 +12,7 @@ for (i = 0; i < listdir.length; i++) {
 		//makeRectangle(370, 516, 1346, 1362); //crop for Flydome A (2048 x 2048 images)
                 makeRectangle(465, 180, 1003, 996); //crop for Flydome B (1900 x 1200 images)
 		run("Crop");
-		run("Z Project...", "projection=[Min Intensity]");
+		run("Z Project...", "projection=[Average Intensity]");
 		title = getTitle();
 		saveAs("Tiff", outputDir + title );
 		run("Close All"); 
