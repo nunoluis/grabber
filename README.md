@@ -63,5 +63,11 @@ This was an attempt to use cron jobs to run the script every time (without the t
 
 ## Flydome_stabilize_crop_MIN_project_subfolders.java
 
-Macro, in Fiji (imagej macro) to go over all subfolders in folder, to AVERAGE projection of all images from same day - stored in same folder - and return a tiff file saved on output Directory with name of original folder.
+Macro, in Fiji (imagej macro) to go over all subfolders in folder, applies a stabilization algorithm (by Kang Li and Steven Kang https://imagej.net/Image_Stabilizer) to each stack of images from same 24h, then AVERAGE projection of all images from same day - stored in same folder - and return a tiff file saved on output Directory with name of original folder.
+There are crop settings (the rectangle selection to be made initially) which are specific for any experiment. This must be done for each new camera set up for any given experiment (also keep in mind that the cameras might move slightly during the length of the entire lifespan).
+
+
+## classifier_macro
+
+This short Fiji macro (ImageJ macro language) applies a Weka classifier - that has already been trained - to a folder with projections from each day, in order to identify the single flies on the bottom of the floor. For each image analized it shows the number of identified objects (particle analyzer result, in "summarize") and saves the mask used for quantification with the same name of the original file in a output Directory chosen by the user.
 
