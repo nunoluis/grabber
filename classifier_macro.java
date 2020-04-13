@@ -14,6 +14,7 @@ wait( 3000 );
 selectWindow("Trainable Weka Segmentation v3.2.34");
 call("trainableSegmentation.Weka_Segmentation.loadClassifier", classifier);
 
+setBatchMode(true);
 //start analysis loop
 	for (i=0; i<images.length; i++) {
 
@@ -31,11 +32,10 @@ call("trainableSegmentation.Weka_Segmentation.loadClassifier", classifier);
 		title_analized = getTitle();
 		run("Analyze Particles...", "size=8-Infinity display summarize");
 		wait(1000);
-		setBatchMode(true);
 		selectWindow(title_analized);
 		run("Close");
 		selectWindow(images[i]);
 		run("Close");
-		setBatchMode(false);
 		
 }
+setBatchMode(false);
