@@ -60,3 +60,8 @@ you can leave your conda environment by typing `conda deactivate`
 ## repeat.sh
 
 This was an attempt to use cron jobs to run the script every time (without the time intervals specified with python). It does not seem to work. To re-visit.
+
+## Flydome_stabilize_crop_MIN_project_subfolders.java
+
+Macro, in Fiji (imagej macro) to go over all subfolders in folder, to AVERAGE projection of all images from same day - stored in same folder - and return a tiff file saved on output Directory with name of original folder.
+
