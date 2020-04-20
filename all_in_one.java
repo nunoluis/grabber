@@ -1,14 +1,19 @@
 run("Close All");
 
 //choose the trained classifier, input files directory and where to place the analized data
-	classifier = File.openDialog("Choose the Weka trained classifier");
-	//classifier = "/home/nunoluis/Desktop/classifier_test_B31.model" this is just for debugging
-	inputfolder = getDirectory("select the folder with images to test");
-	outputfolder = getDirectory("Choose an Output Directory for Masks");
+#@File(style="file", label="Classifier file") classifier
+#@File(style="directory", label="images to test") inputfolder
+#@File(style="directory", label="output folder for Masks") outputfolder
+#@File(style="directory", label="folder for cropped images") outputDir
+#@File(style="directory", label="output folder for Diff") outputDiff
+	//classifier = File.openDialog("Choose the Weka trained classifier");
+	//inputfolder = getDirectory("select the folder with images to test");
+	//outputfolder = getDirectory("Choose an Output Directory for Masks");
 	//outputfolder = "/home/nunoluis/Desktop/test_output/" this is just for debugging
-	images = getFileList(inputfolder);
-	outputDir = getDirectory("Choose a Directory for Croped images");
-	outputDiff = getDirectory("Choose a Directory for Diff images");
+	//outputDir = getDirectory("Choose a Directory for Croped images");
+	//outputDiff = getDirectory("Choose a Directory for Diff images");
+
+images = getFileList(inputfolder);
 
 setBatchMode(true);
 	for (l=0; l<images.length; l++) {
