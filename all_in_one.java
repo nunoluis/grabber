@@ -18,15 +18,24 @@ images = getFileList(inputfolder);
 setBatchMode(true);
 	for (l=0; l<images.length; l++) {
 
-		path = inputfolder + images[l];
+		path = inputfolder + File.separator + images[l];
 		open(path);
 		makeRectangle(394, 526, 1346, 1362); //crop for Flydome A
 		run("Crop");
 		title = getTitle();
-		saveAs("Tiff", outputDir + title );
+		saveAs("Tiff", outputDir + File.separator + title );
 		run("Close All"); 
 }
 
+wait(2000);
+setBatchMode(false);
+	for (l=0; l<1; l++) {
+
+		path = inputfolder + File.separator + images[l];
+		open(path);
+		
+}
+wait(1000);
 
 //start the Weka Segmentation tool and load the classifier
 run("Trainable Weka Segmentation");
@@ -34,6 +43,7 @@ wait( 3000 );
 selectWindow("Trainable Weka Segmentation v3.2.34");
 call("trainableSegmentation.Weka_Segmentation.loadClassifier", classifier);
 
+setBatchMode(true);
 image_crop = getFileList(outputDir);
 
 //start analysis loop
@@ -48,7 +58,7 @@ image_crop = getFileList(outputDir);
 		setSlice(1);
 		setAutoThreshold("Default");
 		run("Convert to Mask");
-		output_path = outputfolder + image_crop[i];
+		output_path = outputfolder + File.separator + image_crop[i];
 		saveAs("Tiff", output_path);
 		title_analized = getTitle();
 		//run("Analyze Particles...", "size=8-Infinity display summarize");
@@ -72,8 +82,8 @@ image_diff = getFileList(outputfolder);
 
 for (j = 0; j < image_diff.length; j++) {
 		
- 		path1 = outputfolder + image_diff[j];
- 		path2 = outputfolder + image_diff[j+1];
+ 		path1 = outputfolder + File.separator + image_diff[j];
+ 		path2 = outputfolder + File.separator + image_diff[j+1];
  		open(path1);
  		open(path2);
  		name = image_diff[j];
@@ -81,7 +91,7 @@ for (j = 0; j < image_diff.length; j++) {
 		run("Z Project...", "projection=[Min Intensity]");
 		run("Analyze Particles...", "size=0-Infinity display summarize");
 		title = getTitle();
-		saveAs("Tiff", outputDiff + title + '_diff');
+		saveAs("Tiff", outputDiff + File.separator + title + '_diff');
 		run("Close All"); 
 		 }
 
