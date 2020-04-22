@@ -3,6 +3,9 @@ run("Close All");
 //choose the trained classifier, input files directory and where to place the analized data
 #@File(style="file", label="Classifier file") classifier
 #@File(style="directory", label="images to test") inputfolder
+//#@File(style="directory", label="output folder for Masks") outputfolder
+//#@File(style="directory", label="folder for cropped images") outputDir
+//#@File(style="directory", label="output folder for Diff") outputDiff
 	
 images = getFileList(inputfolder);
 
@@ -79,10 +82,11 @@ image_diff = getFileList(outputfolder);
 outputDiff = inputfolder + File.separator + 'diff'
 File.makeDirectory(outputDiff);
 
-for (j = 0; j < image_diff.length; j++) {
-		
+for (j = 0; j < (image_diff.length-1); j++) {   //subtract from list_length the step size in path2 below 
+						//to stop the loop before returning error
+	 	
  		path1 = outputfolder + File.separator + image_diff[j];
- 		path2 = outputfolder + File.separator + image_diff[j+1];
+ 		path2 = outputfolder + File.separator + image_diff[j+1]; 	
  		open(path1);
  		open(path2);
  		name = image_diff[j];
@@ -93,6 +97,7 @@ for (j = 0; j < image_diff.length; j++) {
 		saveAs("Tiff", outputDiff + File.separator + title + '_diff');
 		run("Close All"); 
 		 }
+		 
 
 
 setBatchMode(false);
