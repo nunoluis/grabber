@@ -3,17 +3,11 @@ run("Close All");
 //choose the trained classifier, input files directory and where to place the analized data
 #@File(style="file", label="Classifier file") classifier
 #@File(style="directory", label="images to test") inputfolder
-#@File(style="directory", label="output folder for Masks") outputfolder
-#@File(style="directory", label="folder for cropped images") outputDir
-#@File(style="directory", label="output folder for Diff") outputDiff
-	//classifier = File.openDialog("Choose the Weka trained classifier");
-	//inputfolder = getDirectory("select the folder with images to test");
-	//outputfolder = getDirectory("Choose an Output Directory for Masks");
-	//outputfolder = "/home/nunoluis/Desktop/test_output/" this is just for debugging
-	//outputDir = getDirectory("Choose a Directory for Croped images");
-	//outputDiff = getDirectory("Choose a Directory for Diff images");
-
+	
 images = getFileList(inputfolder);
+
+outputDir = inputfolder + File.separator + 'cropped'
+File.makeDirectory(outputDir);
 
 setBatchMode(true);
 	for (l=0; l<images.length; l++) {
@@ -31,7 +25,7 @@ wait(2000);
 setBatchMode(false);
 	for (l=0; l<1; l++) {
 
-		path = inputfolder + File.separator + images[l];
+		path = inputfolder + File.separator + images[l]; //consider removing this line
 		open(path);
 		
 }
@@ -45,6 +39,9 @@ call("trainableSegmentation.Weka_Segmentation.loadClassifier", classifier);
 
 setBatchMode(true);
 image_crop = getFileList(outputDir);
+
+outputfolder = inputfolder + File.separator + 'masks'
+File.makeDirectory(outputfolder);
 
 //start analysis loop
 	for (i=0; i<image_crop.length; i++) {
@@ -79,6 +76,8 @@ wait( 3000 );
 
 image_diff = getFileList(outputfolder);
 
+outputDiff = inputfolder + File.separator + 'diff'
+File.makeDirectory(outputDiff);
 
 for (j = 0; j < image_diff.length; j++) {
 		
