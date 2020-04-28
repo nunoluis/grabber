@@ -1,6 +1,6 @@
 @File(style="directory", label="images to analyse") dir
 
-setBatchMode(true);
+//setBatchMode(true);
 
 list = getFileList(dir);
 File.makeDirectory(File.getParent(dir) + File.separator + 'Normalized');
@@ -31,6 +31,7 @@ for (a=0; a<list.length; a++) {
   				}
 			roiManager("Show None");
 			run("Flatten");
+			run("8-bit");
 			roiManager("reset");
 			saveAs("tiff", output_dir + title);
 			run("Close All");
@@ -40,4 +41,4 @@ for (a=0; a<list.length; a++) {
 	else {}
 }
 
-setBatchMode(false);
+//setBatchMode(false);
