@@ -50,9 +50,11 @@ for (j = 0; j < (image_diff.length-2); j++) {   //subtract from list_length the 
 						//to stop the loop before returning error
 	 	
  		path1 = inputfolder + File.separator + list[a] + File.separator  + image_diff[j];
- 		path2 = inputfolder + File.separator + list[a] + File.separator  + image_diff[j+2]; 	
+ 		path2 = inputfolder + File.separator + list[a] + File.separator  + image_diff[j+1];
+ 		path3 = inputfolder + File.separator + list[a] + File.separator  + image_diff[j+2]; 	
  		open(path1);
  		open(path2);
+ 		open(path3);
  		name = day + '_diff1h_' + j;
         run("Images to Stack", "name=name title=[] use");
 		run("Z Project...", "projection=[Min Intensity]");
@@ -71,9 +73,15 @@ for (j = 0; j < (image_diff.length-4); j++) {   //subtract from list_length the 
 						//to stop the loop before returning error
 	 	
  		path1 = inputfolder + File.separator + list[a] + File.separator  + image_diff[j];
- 		path2 = inputfolder + File.separator + list[a] + File.separator  + image_diff[j+4]; 	
+ 		path2 = inputfolder + File.separator + list[a] + File.separator  + image_diff[j+1];
+ 		path3 = inputfolder + File.separator + list[a] + File.separator  + image_diff[j+2];
+ 		path4 = inputfolder + File.separator + list[a] + File.separator  + image_diff[j+3];
+ 		path5 = inputfolder + File.separator + list[a] + File.separator  + image_diff[j+4];
  		open(path1);
  		open(path2);
+ 		open(path3);
+ 		open(path4);
+ 		open(path5);
  		name = day + '_diff2h_' + j;
         run("Images to Stack", "name=name title=[] use");
 		run("Z Project...", "projection=[Min Intensity]");
@@ -92,9 +100,23 @@ for (j = 0; j < (image_diff.length-8); j++) {   //subtract from list_length the 
 						//to stop the loop before returning error
 	 	
  		path1 = inputfolder + File.separator + list[a] + File.separator  + image_diff[j];
- 		path2 = inputfolder + File.separator + list[a] + File.separator  + image_diff[j+8]; 	
+ 		path2 = inputfolder + File.separator + list[a] + File.separator  + image_diff[j+1];
+ 		path3 = inputfolder + File.separator + list[a] + File.separator  + image_diff[j+2];
+ 		path4 = inputfolder + File.separator + list[a] + File.separator  + image_diff[j+3];
+ 		path5 = inputfolder + File.separator + list[a] + File.separator  + image_diff[j+4];
+ 		path6 = inputfolder + File.separator + list[a] + File.separator  + image_diff[j+5];
+ 		path7 = inputfolder + File.separator + list[a] + File.separator  + image_diff[j+6];
+ 		path8 = inputfolder + File.separator + list[a] + File.separator  + image_diff[j+7];
+ 		path9 = inputfolder + File.separator + list[a] + File.separator  + image_diff[j+8];
  		open(path1);
  		open(path2);
+ 		open(path3);
+ 		open(path4);
+ 		open(path5);
+ 		open(path6);
+ 		open(path7);
+ 		open(path8);
+ 		open(path9);
  		name = day + '_diff4h_' + j;
         run("Images to Stack", "name=name title=[] use");
 		run("Z Project...", "projection=[Min Intensity]");
@@ -109,6 +131,6 @@ for (j = 0; j < (image_diff.length-8); j++) {   //subtract from list_length the 
 }
 
 IJ.renameResults("Results");
-saveAs("Results", inputfolder + File.separator + 'summary.ods');
+saveAs("Results", inputfolder + File.separator + 'summary_all_in_interval.ods');
 
 setBatchMode(false);
