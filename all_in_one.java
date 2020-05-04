@@ -19,6 +19,9 @@ setBatchMode(true);
 		open(path);
 		makeRectangle(394, 526, 1346, 1362); //crop for Flydome A
 		run("Crop");
+		makeRectangle(519, 1, 326, 634); //remove platform for Flydome A
+		setBackgroundColor(0, 0, 0);
+		run("Clear", "slice");
 		title = getTitle();
 		saveAs("Tiff", outputDir + File.separator + title );
 		run("Close All"); 
