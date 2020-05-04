@@ -30,8 +30,9 @@ for (a=0; a<list.length; a++) {
 				fill();
   				}
 			roiManager("Show None");
-			run("Flatten");
+			//run("Flatten"); //started to give out an error after I introduced the watershed below...
 			run("8-bit");
+			run("Watershed);
 			roiManager("reset");
 			saveAs("tiff", output_dir + title);
 			run("Close All");
