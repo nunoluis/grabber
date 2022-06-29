@@ -28,6 +28,23 @@ install with pip
 
 `pip install pypylon-1.5.1-cp37-cp37m-linux_x86_64.whl`
 
+I had some troubles after install Pylon6, after installing pypylon I ran this inside the conda env:
+
+`python -m pip install pypylon --upgrade` it changed the version from 1.5.1 to 1.8.0
+
+still have issues related to libpython3.7m not found
+
+UPDATED 2022.06.29:
+Create a conda env with latest python 3.10 `conda create -n Flydome python=3.10`
+
+install latest pypylon wheel, numpy, image and upyter notebook `pip3 install pypylon`
+`pip3 install numpy`
+`pip3 install imageio`
+`pip3 install jupyter notebook`
+
+from here, running `from pypylon import pylon` inside a jupyter notebook threw no errors
+
+
 for this script to work it depends on a few more packages which you need to install in this conda environment. This can be done via pip. Simply type in your command line (once in your dedicated conda environment):
 
 `pip install numpy`
