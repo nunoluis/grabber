@@ -33,7 +33,9 @@ def grab_image(serial, camera):
         camera.StartGrabbing() 
         result = camera.RetrieveResult(5000, pylon.TimeoutHandling_ThrowException)
         if result.GrabSucceeded():
-            imageio.imsave(base_dir/fname, result.Array)
+            if serial == "22475435":
+                imageio.imsave(base_dir/ "female" /fname, result.Array)
+            else: imageio.imsave(base_dir/ "male" /fname, result.Array)
     finally:
         camera.Close()
         
