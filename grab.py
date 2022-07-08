@@ -1,5 +1,6 @@
 import sys
 import time
+import os
 
 from datetime import datetime
 from pathlib import Path
@@ -10,8 +11,11 @@ from pypylon import genicam
 
 
 base_dir = Path(
-    "/run/user/1000/gvfs/smb-share:server=teamdfs,share=teamschnorrer/EqpSchnorrer/Nuno/FlyDome/Grab_test"
+    "/home/nunoluis/Desktop/20220620_Luminy_Flydome/"
 )
+
+#introduce here Date Of Birth for start of experiment
+dob = datetime.strptime("2022-06-20", "%Y-%m-%d")
 
 def get_cameras():
 
@@ -27,15 +31,24 @@ def get_cameras():
 def grab_image(serial, camera):
     now = datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
     fname = f"img_{serial}_{now}.tiff"
-    print(f"saving {fname} for camera {serial}")
+    dif = datetime.now() - dob
+    days_elapsed = dif.days
+    print(f"saving {fname} for day {days_elapsed} for camera {serial}")
     camera.Open()
     try:
         camera.StartGrabbing() 
         result = camera.RetrieveResult(5000, pylon.TimeoutHandling_ThrowException)
         if result.GrabSucceeded():
             if serial == "22475435":
-                imageio.imsave(base_dir/ "female" /fname, result.Array)
-            else: imageio.imsave(base_dir/ "male" /fname, result.Array)
+                base_dir_fem_day = f"female/day_{days_elapsed}/"
+                if not os.path.exists(base_dir/base_dir_fem_day):
+                    os.makedirs(base_dir/base_dir_fem_day)
+                imageio.imsave(base_dir/base_dir_fem_day/fname, result.Array)
+            else:
+                base_dir_mal_day = f"male/day_{days_elapsed}/"
+                if not os.path.exists(base_dir/base_dir_mal_day):
+                    os.makedirs(base_dir/base_dir_mal_day)
+                imageio.imsave(base_dir/base_dir_mal_day/fname, result.Array)
     finally:
         camera.Close()
         
